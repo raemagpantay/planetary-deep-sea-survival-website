@@ -2,6 +2,7 @@
 @plugin "flowbite-react/plugin/tailwindcss";
 @source "../../.flowbite-react/class-list.json";
 
+
 .bg-transparent {
   background-color: transparent !important; /* Ensure the background is fully transparent */
 }
