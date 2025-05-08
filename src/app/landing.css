@@ -1,0 +1,544 @@
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../../.flowbite-react/class-list.json";
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    font-family: Arial, sans-serif;
+    background: url('/images/hero-bg.jpg') no-repeat center center; /* Center the image */
+    background-size: cover; /* Stretch the image to cover the viewport */
+    color: white;
+  }
+    
+  .landing-page {
+    position: relative; /* Ensure it doesn't interfere with the aurora background */
+    z-index: 1; /* Ensure it sits above the aurora background */
+    text-align: center;
+  }
+    
+  .hero, .signin, .features {
+    background: none; /* Remove any background colors or images */
+    z-index: 2; /* Ensure content is above the aurora background */
+  }
+  
+  .hero {
+    padding: 100px 20px;
+    color: white;
+    text-align: center;
+  }
+  
+  .hero .wave {
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+  
+  .hero button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  .download-button {
+    background-color: #ff5722;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  
+  .features {
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .features .grid {
+    display: grid;
+    gap: 20px;
+  }
+  
+  .features h2, .screenshots h2, .about h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .features ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .features li {
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+  
+  .gallery {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .screenshot-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .screenshot-item img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .screenshot-item:hover img {
+    transform: scale(1.1); /* Enlarge the image on hover */
+    border-radius: 5px; /* Optional: Add a border radius on hover */
+  }
+  
+  .screenshot-item p {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .screenshot-description {
+    position: absolute;
+    bottom: -50px; /* Start hidden below the image */
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 1rem;
+    transition: bottom 0.3s ease; /* Sliding animation */
+  }
+  
+  .screenshot-item:hover .screenshot-description {
+    bottom: 0; /* Slide up to reveal the description */
+  }
+  
+  .screenshots {
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .screenshots img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .screenshot-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .screenshot-item {
+    position: relative;
+    width: 300px;
+  }
+  
+  .screenshot-item img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .screenshot-item p {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1rem;
+  }
+  
+  /* Gallery Grid */
+  .grid-cols-6 {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 equal columns */
+    gap: 1rem; /* Spacing between grid items */
+  }
+  
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .gallery-item:hover img {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+  }
+  
+  /* Gallery Section */
+  .gallery-section {
+    padding: 4rem 1rem;
+    background-color: #1a202c; /* Dark background */
+  }
+  
+  .gallery-section h2 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .gallery-item .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .gallery-item:hover .overlay {
+    opacity: 1;
+  }
+  
+  /* About Us Section */
+  .about {
+    padding: 50px 20px;
+    background: url('/images/about-background.jpg') no-repeat center center; /* Add your background image */
+    background-size: cover; /* Ensure the image covers the entire section */
+    color: white;
+    text-align: center;
+  }
+  
+  .about h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .about p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+  }
+  
+  .trailer {
+    padding: 50px 20px;
+    text-align: center;
+    background: url('/images/trailer-background.jpg') no-repeat center center; /* Add your background image */
+    background-size: cover; /* Ensure the image covers the entire section */
+    color: white; /* Ensure text is readable on the background */
+  }
+  
+  .trailer h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .trailer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5); /* Add a semi-transparent overlay for better readability */
+    border-radius: 10px;
+  }
+  
+  /* Footer Section */
+  .footer {
+    background-color: #0f172a; /* Darker background */
+    color: #94a3b8; /* Light gray text */
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .footer a {
+    color: #60a5fa; /* Light blue links */
+    text-decoration: none;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  
+  .leaderboard {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+  }
+  
+  .leaderboard table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .leaderboard th, .leaderboard td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .leaderboard th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .auth-container {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 400px;
+    background-color: #333;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .auth-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .auth-container button {
+    padding: 10px 20px;
+    background-color: #00B4D8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .auth-container button:hover {
+    background-color: #45a049;
+  }
+  
+  .signin {
+    text-align: center;
+    margin: 50px 0;
+  }
+  
+  /* Parallax Styles */
+  .parallax {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    perspective: 1px;
+  }
+  
+  .parallax__layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+  }
+  
+  .parallax__layer--base {
+    transform: translateZ(0);
+  }
+  
+  .parallax__layer--back {
+    transform: translateZ(-1px) scale(2);
+  }
+  
+  .parallax__layer--deep {
+    transform: translateZ(-2px) scale(3);
+  }
+  
+  /* Wave Animation Styles */
+  .wave {
+    display: inline-block;
+    font-size: 5rem; /* Increased size for emphasis */
+    font-weight: bold;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #0077B6, #00B4D8, #90E0EF, #CAF0F8); /* Blue gradient */
+    background-size: 200%; /* Make the gradient larger than the text */
+    -webkit-background-clip: text; /* Clip the gradient to the text */
+    background-clip: text; /* Standard property for compatibility */
+    -webkit-text-fill-color: transparent; /* Make the text transparent to show the gradient */
+    animation: wave-color-animation 5s infinite linear; /* Animate the gradient */
+  }
+  
+  .wave span {
+    display: inline-block;
+    animation: wave-animation 1.5s infinite ease-in-out;
+  }
+  
+  .wave span:nth-child(1) { animation-delay: 0s; }
+  .wave span:nth-child(2) { animation-delay: 0.1s; }
+  .wave span:nth-child(3) { animation-delay: 0.2s; }
+  .wave span:nth-child(4) { animation-delay: 0.3s; }
+  .wave span:nth-child(5) { animation-delay: 0.4s; }
+  .wave span:nth-child(6) { animation-delay: 0.5s; }
+  .wave span:nth-child(7) { animation-delay: 0.6s; }
+  .wave span:nth-child(8) { animation-delay: 0.7s; }
+  .wave span:nth-child(9) { animation-delay: 0.8s; }
+  
+  @keyframes wave-animation {
+    0%, 100% {
+      transform: translateY(0);
+      color: #fff; /* Default color */
+    }
+    50% {
+      transform: translateY(-10px);
+      color: #ff5722; /* Highlight color */
+    }
+  }
+  
+  @keyframes wave-color-animation {
+    0% {
+      background-position: 0% 50%; /* Start position of the gradient */
+    }
+    100% {
+      background-position: 200% 50%; /* End position matches the start for a seamless loop */
+    }
+  }
+  
+  /* Navigation Menu Styles */
+  .navigation-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+  }
+  
+  .navigation-menu ul {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .navigation-menu li {
+    margin: 0 15px;
+  }
+  
+  .navigation-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .navigation-menu a:hover {
+    color: #60a5fa; /* Light blue on hover */
+  }
+  
+  /* Button Styles */
+  .btn-6 {
+    background: rgb(84, 190, 231);
+    background: radial-gradient(circle, rgb(8, 66, 141) 0%, rgba(118, 174, 241, 1) 100%);
+    line-height: 62px;
+    width: 150px;
+    height: 62px;
+    text-align: center;
+    text-decoration: none;
+    padding: 5;
+    color: #fff;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px; /* Optional: Add rounded corners */
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn-6 span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .btn-6:before,
+  .btn-6:after {
+    position: absolute;
+    content: "";
+    height: 0%;
+    width: 1px;
+    box-shadow: -1px -1px 20px 0px rgba(255, 255, 255, 1),
+      -4px -4px 5px 0px rgba(255, 255, 255, 1), 7px 7px 20px 0px rgba(0, 0, 0, 0.4),
+      4px 4px 5px 0px rgba(0, 0, 0, 0.3);
+  }
+  
+  .btn-6:before {
+    right: 0;
+    top: 0;
+    transition: all 500ms ease;
+  }
+  
+  .btn-6:after {
+    left: 0;
+    bottom: 0;
+    transition: all 500ms ease;
+  }
+  
+  .btn-6:hover {
+    background: transparent;
+    color: #0e78b6;
+    box-shadow: none;
+  }
+  
+  .btn-6:hover:before {
+    transition: all 500ms ease;
+    height: 100%;
+  }
+  
+  .btn-6:hover:after {
+    transition: all 500ms ease;
+    height: 100%;
+  }
+  
+  .btn-6 span:before,
+  .btn-6 span:after {
+    position: absolute;
+    content: "";
+    box-shadow: -1px -1px 20px 0px rgba(255, 255, 255, 1),
+      -4px -4px 5px 0px rgba(255, 255, 255, 1), 7px 7px 20px 0px rgba(0, 0, 0, 0.4),
+      4px 4px 5px 0px rgba(0, 0, 0, 0.3);
+  }
+  
+  .btn-6 span:before {
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: 0.5px;
+    transition: all 500ms ease;
+  }
+  
+  .btn-6 span:after {
+    right: 0;
+    bottom: 0;
+    width: 0%;
+    height: 0.5px;
+    transition: all 500ms ease;
+  }
+  
+  .btn-6 span:hover:before {
+    width: 100%;
+  }
+  
+  .btn-6 span:hover:after {
+    width: 100%;
+  }
