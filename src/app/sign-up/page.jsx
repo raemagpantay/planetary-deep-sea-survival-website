@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '@/app/firebase/config';
 
-
 function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -15,25 +14,47 @@ function SignUp() {
   const router = useRouter();
 
   const handleSignUp = async () => {
+    setError(''); // Clear previous errors
+
+    // Validate inputs
+    if (!email || !password) {
+      setError('Please fill in all fields.');
+      return;
+    }
     if (!isTermsAccepted) {
       setError('You must accept the terms and conditions to sign up.');
       return;
     }
+
     try {
       const res = await createUserWithEmailAndPassword(email, password);
+      if (!res) {
+        setError('An error occurred. Please try again.');
+        return;
+      }
       console.log({ res });
       sessionStorage.setItem('user', true);
       setEmail('');
       setPassword('');
       setError('');
+      router.push('/'); // Redirect to homepage after successful sign-up
     } catch (e) {
+      // Handle Firebase errors
+      if (e.code === 'auth/email-already-in-use') {
+        setError('This email is already in use.');
+      } else if (e.code === 'auth/weak-password') {
+        setError('Password should be at least 6 characters.');
+      } else if (e.code === 'auth/invalid-email') {
+        setError('Please enter a valid email address.');
+      } else {
+        setError('An error occurred during sign-up. Please try again.');
+      }
       console.error(e);
-      setError('An error occurred during sign-up. Please try again.');
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center relative">
+    <div className="min-h-screen flex items-center justify-center">
       <div className={`bg-gray-800 p-10 rounded-lg shadow-xl w-96 ${isModalOpen ? 'blur-sm' : ''}`}>
         <h1 className="text-white text-2xl mb-5">Sign Up</h1>
         <input
@@ -41,13 +62,15 @@ function SignUp() {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full p-3 mb-4 bg-gray-700 rounded outline-none text-white placeholder-gray-500" />
+          className="w-full p-3 mb-4 bg-gray-700 rounded outline-none text-white placeholder-gray-500"
+        />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full p-3 mb-4 bg-gray-700 rounded outline-none text-white placeholder-gray-500" />
+          className="w-full p-3 mb-4 bg-gray-700 rounded outline-none text-white placeholder-gray-500"
+        />
         <p className="text-gray-400 text-sm mb-4">
           Already have an account?{' '}
           <span
@@ -72,7 +95,8 @@ function SignUp() {
             id="terms"
             checked={isTermsAccepted}
             onChange={(e) => setIsTermsAccepted(e.target.checked)}
-            className="mr-2" />
+            className="mr-2"
+          />
           <label htmlFor="terms" className="text-gray-400 text-sm">
             I accept the terms and conditions
           </label>
