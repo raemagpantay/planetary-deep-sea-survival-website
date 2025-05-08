@@ -8,15 +8,13 @@ function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isTermsAccepted, setIsTermsAccepted] = useState(false); // Track checkbox state
-  const [error, setError] = useState(''); // Track error messages
+  const [isTermsAccepted, setIsTermsAccepted] = useState(false);
+  const [error, setError] = useState('');
   const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
   const router = useRouter();
 
   const handleSignUp = async () => {
-    setError(''); // Clear previous errors
-
-    // Validate inputs
+    setError('');
     if (!email || !password) {
       setError('Please fill in all fields.');
       return;
@@ -33,13 +31,12 @@ function SignUp() {
         return;
       }
       console.log({ res });
-      sessionStorage.setItem('user', true);
+      sessionStorage.setItem('userEmail', res.user.email); // Store user email in sessionStorage
       setEmail('');
       setPassword('');
       setError('');
       router.push('/'); // Redirect to homepage after successful sign-up
     } catch (e) {
-      // Handle Firebase errors
       if (e.code === 'auth/email-already-in-use') {
         setError('This email is already in use.');
       } else if (e.code === 'auth/weak-password') {
