@@ -2,6 +2,13 @@
 @plugin "flowbite-react/plugin/tailwindcss";
 @source "../../.flowbite-react/class-list.json";
 
+.bg-transparent {
+  background-color: transparent !important; /* Ensure the background is fully transparent */
+}
+.py-1 {
+  padding-top: 0.25rem !important; /* 4px */
+  padding-bottom: 0.25rem !important; /* 4px */
+}
 body {
     margin: 0;
     padding: 0;

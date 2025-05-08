@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation';
 import { signOut } from 'firebase/auth';
 import './landing.css';
 import { useEffect } from 'react';
-import { Component as NavbarWithDropdown } from './index'; // Import the Navbar component
 
 export default function Home() {
   const [user] = useAuthState(auth);

@@ -1,5 +1,4 @@
 'use client';
-
 import {
   Avatar,
   Dropdown,
@@ -15,11 +14,10 @@ import {
 
 export default function CustomNavbar() {
   return (
-    <Navbar fluid rounded>
+    <Navbar fluid rounded className="bg-transparent">
       <NavbarBrand href="/">
-        <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
+        <img src='/images/life_sea_ocean_fish_tang_yellow.svg' className="mr-3 h-6 sm:h-9" alt="Game Logo" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-          Planetary Deep-Sea Survival
         </span>
       </NavbarBrand>
       <div className="flex md:order-2">
@@ -29,7 +27,7 @@ export default function CustomNavbar() {
           label={
             <Avatar
               alt="User settings"
-              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+              img='/images/abstract-user-flat-4.svg'
               rounded
             />
           }
@@ -40,21 +38,11 @@ export default function CustomNavbar() {
           </DropdownHeader>
           <DropdownItem>Dashboard</DropdownItem>
           <DropdownItem>Settings</DropdownItem>
-          <DropdownItem>Earnings</DropdownItem>
           <DropdownDivider />
           <DropdownItem>Sign out</DropdownItem>
         </Dropdown>
         <NavbarToggle />
       </div>
-      <NavbarCollapse>
-        <NavbarLink href="#" active>
-          Home
-        </NavbarLink>
-        <NavbarLink href="#about">About</NavbarLink>
-        <NavbarLink href="#services">Services</NavbarLink>
-        <NavbarLink href="#pricing">Pricing</NavbarLink>
-        <NavbarLink href="#contact">Contact</NavbarLink>
-      </NavbarCollapse>
     </Navbar>
   );
 }
