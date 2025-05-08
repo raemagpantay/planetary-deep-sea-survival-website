@@ -4,7 +4,8 @@ import { useRouter } from 'next/navigation';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '@/app/firebase/config';
 
-const SignUp = () => {
+
+function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -40,15 +41,13 @@ const SignUp = () => {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full p-3 mb-4 bg-gray-700 rounded outline-none text-white placeholder-gray-500"
-        />
+          className="w-full p-3 mb-4 bg-gray-700 rounded outline-none text-white placeholder-gray-500" />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full p-3 mb-4 bg-gray-700 rounded outline-none text-white placeholder-gray-500"
-        />
+          className="w-full p-3 mb-4 bg-gray-700 rounded outline-none text-white placeholder-gray-500" />
         <p className="text-gray-400 text-sm mb-4">
           Already have an account?{' '}
           <span
@@ -73,8 +72,7 @@ const SignUp = () => {
             id="terms"
             checked={isTermsAccepted}
             onChange={(e) => setIsTermsAccepted(e.target.checked)}
-            className="mr-2"
-          />
+            className="mr-2" />
           <label htmlFor="terms" className="text-gray-400 text-sm">
             I accept the terms and conditions
           </label>
@@ -161,6 +159,6 @@ const SignUp = () => {
       )}
     </div>
   );
-};
+}
 
 export default SignUp;
