@@ -15,16 +15,15 @@ import {
   export function Component() {
     return (
       <Navbar fluid rounded>
-        <NavbarBrand href="https://flowbite-react.com">
+        <NavbarBrand href='/page'>
           <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>
         </NavbarBrand>
         <div className="flex md:order-2">
           <Dropdown
             arrowIcon={false}
             inline
             label={
-              <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />
+              <Avatar alt="User settings" img="public\images\abstract-user-flat-4.svg" rounded />
             }
           >
             <DropdownHeader>
@@ -33,7 +32,6 @@ import {
             </DropdownHeader>
             <DropdownItem>Dashboard</DropdownItem>
             <DropdownItem>Settings</DropdownItem>
-            <DropdownItem>Earnings</DropdownItem>
             <DropdownDivider />
             <DropdownItem>Sign out</DropdownItem>
           </Dropdown>
@@ -43,8 +41,8 @@ import {
           <NavbarLink href="#" active>
             Home
           </NavbarLink>
+          <NavbarLink href="#">Features</NavbarLink>
           <NavbarLink href="#">About</NavbarLink>
-          <NavbarLink href="#">Services</NavbarLink>
           <NavbarLink href="#">Pricing</NavbarLink>
           <NavbarLink href="#">Contact</NavbarLink>
         </NavbarCollapse>
