@@ -97,7 +97,7 @@ export default function Home() {
               </p>
               <div className="video-thumbnail">
                 <video
-                  src="/videos/2025-05-08_18-55-46.mp4" // Corrected file path
+                  src="#"
                   controls
                   className="w-full h-auto"
                 >
