@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
+  // Add this for proper client-side routing
+  skipTrailingSlashRedirect: true
 }
 
 export default nextConfig

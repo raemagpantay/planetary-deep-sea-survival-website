@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ] # Trigger on pushes to main branch
+    branches: [ "main" ]
 
 permissions:
   contents: read
@@ -28,16 +28,19 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - - name: Export static site
-          run: |
-            npm run build
-            npm run export
-            cp -r out/_next out/planetary-deep-sea-survival-website/_next
+      - name: Export and prepare assets
+        run: |
+          npm run export
+          mkdir -p out/planetary-deep-sea-survival-website
+          cp -R out/* out/planetary-deep-sea-survival-website/
+          rm -rf out/_next
+          mv out/planetary-deep-sea-survival-website/_next out/
+          touch out/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: out/ # Your exported Next.js folder
+          path: out/
 
   deploy:
     needs: build

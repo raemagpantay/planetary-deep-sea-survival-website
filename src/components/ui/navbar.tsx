@@ -13,6 +13,7 @@ import {
 import { useRouter } from 'next/navigation';
 import { auth } from '@/app/firebase/config';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { withBasePath } from '@/utils/paths'; // Added import
 
 export default function CustomNavbar() {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -48,7 +49,7 @@ export default function CustomNavbar() {
     <Navbar fluid rounded className="bg-transparent">
       <NavbarBrand href="/planetary-deep-sea-survival-website/">
         <img
-          src="/planetary-deep-sea-survival-website/images/life_sea_ocean_fish_tang_yellow.svg"
+          src={withBasePath("/images/life_sea_ocean_fish_tang_yellow.svg")}
           className="mr-3 h-6 sm:h-9"
           alt="Game Logo"
         />
@@ -60,7 +61,7 @@ export default function CustomNavbar() {
           label={
             <Avatar
               alt="User settings"
-              img={isSignedIn ? undefined : "/images/abstract-user-flat-4.svg"}
+              img={isSignedIn ? undefined : withBasePath("/images/abstract-user-flat-4.svg")} // Updated path
               rounded
               placeholderInitials={isSignedIn && userEmail ? userEmail[0].toUpperCase() : undefined}
               bordered

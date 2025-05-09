@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '@/app/firebase/config';
+import { withBasePath } from '@/utils/paths';
 
 function SignUp() {
   const [email, setEmail] = useState('');
@@ -35,7 +36,7 @@ function SignUp() {
       setEmail('');
       setPassword('');
       setError('');
-      router.push('/'); // Redirect to homepage after successful sign-up
+      router.push(withBasePath('/'));
     } catch (e) {
       if (e.code === 'auth/email-already-in-use') {
         setError('This email is already in use.');
