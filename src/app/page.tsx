@@ -13,6 +13,13 @@ export default function Home() {
 
   console.log({ user });
 
+  useEffect(() => {
+  const email = sessionStorage.getItem('userEmail');
+  if (email) {
+    // You can use this if you need the email in the landing page
+  }
+}, [user]);
+
   return (
     <main>
       <div className="landing-page">
@@ -79,15 +86,25 @@ export default function Home() {
         <section id="trailer" className="trailer">
           <h2>Game Trailer</h2>
           <div className="trailer-container">
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/your-video-id" // Replace with your YouTube video link
-              title="Game Trailer"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+            <div className="video-placeholder">
+              <p className="text-gray-200">
+                Get ready for an epic underwater adventure!
+                <br />
+                <br />
+                Watch the trailer to see the stunning graphics and gameplay.
+                <br />  
+                Watch the game trailer here!
+              </p>
+              <div className="video-thumbnail">
+                <video
+                  src="/videos/2025-05-08_18-55-46.mp4" // Corrected file path
+                  controls
+                  className="w-full h-auto"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
           </div>
         </section>
 

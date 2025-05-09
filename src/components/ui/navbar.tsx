@@ -18,7 +18,7 @@ export default function CustomNavbar() {
   const router = useRouter();
 
   useEffect(() => {
-    const email = sessionStorage.getItem('userEmail'); // Retrieve user email from sessionStorage
+    const email = sessionStorage.getItem('userEmail');
     if (email) {
       setIsSignedIn(true);
       setUserEmail(email);
@@ -26,10 +26,10 @@ export default function CustomNavbar() {
   }, []);
 
   const handleSignOut = () => {
-    sessionStorage.removeItem('userEmail'); // Remove user email from sessionStorage
+    sessionStorage.removeItem('userEmail');
     setIsSignedIn(false);
     setUserEmail('');
-    router.push('/sign-in'); // Redirect to sign-in page
+    router.push('/sign-in');
   };
 
   return (
@@ -40,8 +40,6 @@ export default function CustomNavbar() {
           className="mr-3 h-6 sm:h-9"
           alt="Game Logo"
         />
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-        </span>
       </NavbarBrand>
       <div className="flex md:order-2">
         <Dropdown
@@ -50,8 +48,11 @@ export default function CustomNavbar() {
           label={
             <Avatar
               alt="User settings"
-              img="/images/abstract-user-flat-4.svg"
+              img={isSignedIn ? undefined : "/images/abstract-user-flat-4.svg"}
               rounded
+              placeholderInitials={isSignedIn && userEmail ? userEmail[0].toUpperCase() : undefined}
+              bordered
+              className="border-2 border-gray-300"
             />
           }
         >
