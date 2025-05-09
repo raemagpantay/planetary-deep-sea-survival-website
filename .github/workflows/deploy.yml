@@ -16,6 +16,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Clean previous artifacts
+        run: |
+          rm -rf out/
+          mkdir -p out/
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -41,6 +46,7 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           path: out/
+          retention-days: 1
 
   deploy:
     needs: build
