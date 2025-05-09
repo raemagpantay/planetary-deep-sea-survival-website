@@ -2,9 +2,10 @@ const config = {
   plugins: ["@tailwindcss/postcss"],
 };
 
-export default config;
-module.exports = {
+// filepath: c:\Users\Andrea\planetary-deep-sea-survival-website\postcss.config.mjs
+export default {
   plugins: {
-    "@tailwindcss/postcss": {},
+    tailwindcss: {},
+    autoprefixer: {}, // Ensure autoprefixer is listed here
   },
 };
