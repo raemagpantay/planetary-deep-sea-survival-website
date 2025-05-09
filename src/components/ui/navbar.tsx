@@ -46,9 +46,9 @@ export default function CustomNavbar() {
 
   return (
     <Navbar fluid rounded className="bg-transparent">
-      <NavbarBrand href="/">
+      <NavbarBrand href="/planetary-deep-sea-survival-website/">
         <img
-          src="/images/life_sea_ocean_fish_tang_yellow.svg"
+          src="/planetary-deep-sea-survival-website/images/life_sea_ocean_fish_tang_yellow.svg"
           className="mr-3 h-6 sm:h-9"
           alt="Game Logo"
         />

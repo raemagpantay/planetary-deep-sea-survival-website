@@ -30,6 +30,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <header>
+          <link 
+    rel="stylesheet" 
+    href="/planetary-deep-sea-survival-website/globals.css" 
+  />
           <CustomNavbar />
         </header>
         <AuthProvider>

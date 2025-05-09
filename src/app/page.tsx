@@ -68,15 +68,15 @@ export default function Home() {
           <h2>Game Screenshots</h2>
           <div className="screenshot-gallery">
             <div className="screenshot-item">
-              <img src="/images/screenshot1.jpg" alt="Screenshot 1" />
+              <img src={`${process.env.NEXT_PUBLIC_BASE_PATH}/images/screenshot1.jpg`} alt="Screenshot 1" />
               <p>Explore the underwater world</p>
             </div>
             <div className="screenshot-item">
-              <img src="/images/screenshot2.jpg" alt="Screenshot 2" />
+              <img src={`${process.env.NEXT_PUBLIC_BASE_PATH}/images/screenshot2.jpg`} alt="Screenshot 2" />
               <p>Battle sea creatures</p>
             </div>
             <div className="screenshot-item">
-              <img src="/images/screenshot3.jpg" alt="Screenshot 3" />
+              <img src={`${process.env.NEXT_PUBLIC_BASE_PATH}/images/screenshot3.jpg`} alt="Screenshot 3" />
               <p>Survive the depths</p>
             </div>
           </div>

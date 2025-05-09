@@ -28,8 +28,11 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Export static site
-        run: npm run export
+      - - name: Export static site
+          run: |
+            npm run build
+            npm run export
+            cp -r out/_next out/planetary-deep-sea-survival-website/_next
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
