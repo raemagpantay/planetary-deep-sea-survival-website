@@ -11,6 +11,8 @@ import {
   NavbarToggle,
 } from 'flowbite-react';
 import { useRouter } from 'next/navigation';
+import { auth } from '@/app/firebase/config';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 
 export default function CustomNavbar() {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -18,18 +20,28 @@ export default function CustomNavbar() {
   const router = useRouter();
 
   useEffect(() => {
-    const email = sessionStorage.getItem('userEmail');
-    if (email) {
-      setIsSignedIn(true);
-      setUserEmail(email);
-    }
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsSignedIn(true);
+        setUserEmail(user.email || '');
+        sessionStorage.setItem('userEmail', user.email || '');
+      } else {
+        setIsSignedIn(false);
+        setUserEmail('');
+        sessionStorage.removeItem('userEmail');
+      }
+    });
+
+    return () => unsubscribe();
   }, []);
 
-  const handleSignOut = () => {
-    sessionStorage.removeItem('userEmail');
-    setIsSignedIn(false);
-    setUserEmail('');
-    router.push('/sign-in');
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      router.push('/sign-in');
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
   };
 
   return (
@@ -61,12 +73,23 @@ export default function CustomNavbar() {
           ) : (
             <>
               <DropdownHeader>
-                <span className="block text-sm">{userEmail}</span>
+                <span className="block text-sm font-medium text-gray-900 dark:text-white">
+                  {userEmail}
+                </span>
               </DropdownHeader>
-              <DropdownItem onClick={() => router.push('/dashboard')}>Dashboard</DropdownItem>
-              <DropdownItem onClick={() => router.push('/settings')}>Settings</DropdownItem>
+              <DropdownItem onClick={() => router.push('/dashboard')}>
+                Dashboard
+              </DropdownItem>
+              <DropdownItem onClick={() => router.push('/settings')}>
+                Settings
+              </DropdownItem>
               <DropdownDivider />
-              <DropdownItem onClick={handleSignOut}>Sign Out</DropdownItem>
+              <DropdownItem 
+                onClick={handleSignOut}
+                className="text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-gray-700"
+              >
+                Sign Out
+              </DropdownItem>
             </>
           )}
         </Dropdown>
